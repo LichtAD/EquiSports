@@ -1,3 +1,4 @@
+// my equipment list - 4th in nav
 import React from 'react';
 
 const EquipmentList = () => {

@@ -1,9 +1,99 @@
 import React from 'react';
 
 const AddEquipment = () => {
+
+    const handleAddEquipment = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const item_name = form.item_name.value;
+        const category_name = form.category_name.value;
+        const description = form.description.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const customization = form.customization.value;
+        const processing_time = form.processing_time.value;
+        const stock_status = form.stock_status.value;
+        const image = form.image.value;
+        console.log({ item_name, category_name, description, price, rating, customization, processing_time, stock_status, image });
+    }
+
     return (
-        <div>
-            <h2>Add Equipment</h2>
+        <div className='space-y-4 my-10'>
+            <h1 className='text-3xl text-center font-bold'>Add New Equipment</h1>
+            <p className='text-center w-[80%] mx-auto'>Add your new sports equipment to our platform. Describe it as much as you can so that other users can understand what they are getting. Make sure to add a good image and to set a fair price.</p>
+
+            <div className=''>
+                <form onSubmit={handleAddEquipment}>
+                    <div className='flex justify-center items-center flex-col my-4'>
+                        <h1 className='text-2xl font-bold'>Email: abc@gmail.com</h1>
+                        <h2 className='text-2xl font-bold'>Name: abc</h2>
+                    </div>
+                    <div className='grid grid-cols-2 gap-4'>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Item Name</span>
+                            </label>
+                            <input type="text" name="item_name" placeholder="Enter Item Name" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Category Name</span>
+                            </label>
+                            <input type="text" name="category_name" placeholder="Enter Category Name" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Description</span>
+                            </label>
+                            <input type="text" name="description" placeholder="Enter Description" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Price</span>
+                            </label>
+                            <input type="number" name="price" placeholder="Enter Price" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Rating</span>
+                            </label>
+                            <input type="number" name="rating" placeholder="Enter Rating" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Customization</span>
+                            </label>
+                            <input type="text" name="customization" placeholder="Enter Customization" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Processing Time</span>
+                            </label>
+                            <input type="number" name="processing_time" placeholder="Enter Processing Time" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Stock Status</span>
+                            </label>
+                            <input type="number" name="stock_status" placeholder="Enter Stock Status" className="input input-bordered" required />
+                        </div>
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Image</span>
+                        </label>
+                        <input type="text" name="image" placeholder="Enter Image" className="input input-bordered" required />
+                    </div>
+
+                    <div className="form-control mt-8">
+                        <button className="btn border-2 text-xl w-full">
+                            Add Equipment
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
     );
 };
