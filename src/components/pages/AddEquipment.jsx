@@ -1,6 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const AddEquipment = () => {
+
+    const navigate = useNavigate();
+
+    const email = "abc@gmail.com";
+    const name = "abc";
 
     const handleAddEquipment = (event) => {
         event.preventDefault();
@@ -14,7 +21,32 @@ const AddEquipment = () => {
         const processing_time = form.processing_time.value;
         const stock_status = form.stock_status.value;
         const image = form.image.value;
-        console.log({ item_name, category_name, description, price, rating, customization, processing_time, stock_status, image });
+
+        const newEquipment = { email, name, item_name, category_name, description, price, rating, customization, processing_time, stock_status, image };
+        console.log(newEquipment);
+
+        // ! send data to the server
+        fetch('http://localhost:5000/equisports', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newEquipment)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                Swal.fire({
+                    title: "Congratulation!",
+                    text: "New Data has been added in the database!",
+                    icon: "success",
+                    confirmButtonText: "Ok"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate('/');
+                    }
+                })
+            });
     }
 
     return (
@@ -25,8 +57,8 @@ const AddEquipment = () => {
             <div className=''>
                 <form onSubmit={handleAddEquipment}>
                     <div className='flex justify-center items-center flex-col my-4'>
-                        <h1 className='text-2xl font-bold'>Email: abc@gmail.com</h1>
-                        <h2 className='text-2xl font-bold'>Name: abc</h2>
+                        <h1 className='text-2xl font-bold'>Email: {email}</h1>
+                        <h2 className='text-2xl font-bold'>Name: {name}</h2>
                     </div>
                     <div className='grid grid-cols-2 gap-4'>
                         <div className="form-control">
