@@ -5,12 +5,15 @@ import { FaEyeSlash } from "react-icons/fa6";
 import { IoLogoGoogle } from "react-icons/io";
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const Registration = () => {
 
-    const { createNewUser, setUser } = useContext(AuthContext);
+    const { createNewUser, user, setUser, updateMyProfile } = useContext(AuthContext);
 
     const navigate = useNavigate();
+
+    const [error, setError] = useState('');
 
     const handleRegistration = (event) => {
         event.preventDefault();
@@ -21,24 +24,66 @@ const Registration = () => {
         const password = form.password.value;
         console.log({ name, email, photo, password });
 
+        const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+        // const password = "Passwx";
+        const isValid = regex.test(password);
+        // console.log(isValid); // true if valid, false otherwise
+
+        if (!isValid) {
+            setError('Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.');
+            toast.error('Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.', {
+                position: "top-right",
+                autoClose: 2000
+            })
+            return;
+        }
+
+        setError('');
+
         createNewUser(email, password)
             .then(result => {
-                setUser(result.user);
+                const newUser  = result.user;
+                // setUser(result.user);
                 // console.log(result.user);
+
+                // start
                 Swal.fire({
                     title: "Congratulations!",
                     text: "You have successfully registered!",
-                    icon: "success"
+                    icon: "success",
+                    confirmButtonText: "OK"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        navigate('/')
+                        updateMyProfile({ displayName: name, photoURL: photo })
+                            // navigate('/');
+                            .then(() => {
+                                setUser({ ...newUser, displayName: name, photoURL: photo });
+                                navigate('/');
+                            })
+                            .catch(err => {
+                                const errorMessage = err.message;
+                                // console.log({ errorMessage });
+                                setError(errorMessage);
+                                toast.error(errorMessage, {
+                                    position: "top-right",
+                                    autoClose: 2000
+                                })
+                            })
                     }
                 })
+                // end
+
                 form.reset();
             })
             .catch(err => {
                 const errorMessage = err.message;
-                console.log({ errorMessage });
+                // console.log({ errorMessage });
+                setError(errorMessage);
+                toast.error(err.message, {
+                    position: "top-right",
+                    autoClose: 2000
+                })
             })
     }
 
@@ -92,9 +137,9 @@ const Registration = () => {
 
                         </div>
 
-                        {/* {
+                        {
                             error && <p className='text-red-600'>{error}</p>
-                        } */}
+                        }
 
                         <div className="form-control mt-1">
                             <button className="btn btn-primary">Register</button>

@@ -51,11 +51,11 @@ const Navbar = () => {
                     </div>
                     <div className='flex gap-2 items-center'>
                         <NavLink to="/" className="btn btn-ghost text-xl">Equisports</NavLink>
-                        <h2>
+                        {/* <h2>
                             {
                                 user ? `Welcome ${user.email} - ${user.displayName}` : 'Welcome Guest'
                             }
-                        </h2>
+                        </h2> */}
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -67,7 +67,20 @@ const Navbar = () => {
                     <div>
                         {
                             user && user?.email ?
-                                <button onClick={logOut} className="btn bg-white border-none">LogOut</button>
+                                <div className='flex items-center gap-4'>
+                                    <div>
+                                        {
+                                            user && user?.photoURL ?
+                                                <div className="avatar tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                                    <div className="w-12 rounded-full">
+                                                        <img src={user?.photoURL} />
+                                                    </div>
+                                                </div>
+                                                : 'image'
+                                        }
+                                    </div>
+                                    <button onClick={logOut} className="btn bg-white border-none">LogOut</button>
+                                </div>
                                 : <div className="flex gap-2">
                                     <NavLink to={'/registration'} className="btn bg-white border-none">Registration</NavLink>
                                     <NavLink to={'/login'} className="btn bg-white border-none">Login</NavLink>
