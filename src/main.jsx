@@ -28,9 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/allEquipment",
-        element: <PrivateRoute>
-          <AllEquipment></AllEquipment>
-        </PrivateRoute>,
+        element: <AllEquipment></AllEquipment>,
         loader: async () => fetch('http://localhost:5000/equisports'),
       },
       {
