@@ -22,7 +22,7 @@ const Registration = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
-        console.log({ name, email, photo, password });
+        // console.log({ name, email, photo, password });
 
         const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 

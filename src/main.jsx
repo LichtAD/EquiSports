@@ -51,6 +51,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <EquipmentList></EquipmentList>
         </PrivateRoute>,
+        loader: async () => fetch('http://localhost:5000/equisports'),
       },
       {
         path: "/registration",

@@ -1,10 +1,32 @@
 // my equipment list - 4th in nav
-import React from 'react';
+import React, { useContext } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import SingleMyEquipment from './SingleMyEquipment';
+import { AuthContext } from '../provider/AuthProvider';
 
 const EquipmentList = () => {
+
+    const { user } = useContext(AuthContext);
+
+    const loadedEquipment = useLoaderData();
+    // console.log(loadedEquipment);
+
+    const filterdData = loadedEquipment.filter(data => data.email === user?.email);
+    // console.log(filterdData);
+
     return (
         <div>
-            <h3>Equipment List</h3>
+            <div className='my-4'>
+                {/* <h3 className='text-center text-3xl font-bold'>Equipment List</h3> */}
+                <h1 className='text-center text-2xl font-bold'>Name: {user?.displayName}</h1>
+                <h2 className='text-center text-2xl font-bold'>Email: {user?.email}</h2>
+            </div>
+
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                {
+                    filterdData.map((equipment, index) => <SingleMyEquipment key={index} equipment={equipment}></SingleMyEquipment>)
+                }
+            </div>
         </div>
     );
 };

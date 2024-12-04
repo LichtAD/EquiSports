@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import { AuthContext } from '../provider/AuthProvider';
 
 const AddEquipment = () => {
 
+    const { user } = useContext(AuthContext);
+    // console.log(user);
+
     const navigate = useNavigate();
 
-    const email = "abc@gmail.com";
-    const name = "abc";
+    const email = user?.email;
+    const name = user?.displayName;
 
     const handleAddEquipment = (event) => {
         event.preventDefault();
@@ -23,7 +27,7 @@ const AddEquipment = () => {
         const image = form.image.value;
 
         const newEquipment = { email, name, item_name, category_name, description, price, rating, customization, processing_time, stock_status, image };
-        console.log(newEquipment);
+        // console.log(newEquipment);
 
         // ! send data to the server
         fetch('http://localhost:5000/equisports', {
@@ -35,7 +39,7 @@ const AddEquipment = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 Swal.fire({
                     title: "Congratulation!",
                     text: "New Data has been added in the database!",
@@ -43,7 +47,7 @@ const AddEquipment = () => {
                     confirmButtonText: "Ok"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        navigate('/');
+                        navigate('/equipmentList');
                     }
                 })
             });
