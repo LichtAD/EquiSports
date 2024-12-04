@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { IoLogoGoogle } from "react-icons/io";
+import { AuthContext } from '../provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+
+    const location = useLocation();
+    // console.log(location);
+
+    const navigate = useNavigate();
+
+    const { logInUser, setUser } = useContext(AuthContext);
+
+    const [error, setError] = useState('');
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -12,6 +24,32 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log({ email, password });
+
+        logInUser(email, password)
+            .then(result => {
+                setUser(result.user);
+                // console.log(result.user);
+                Swal.fire({
+                    title: "Congratulations!",
+                    text: "You have successfully logged in!",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate(location?.state ? location.state : "/" )
+                    }
+                })
+                form.reset();
+            })
+            .catch(err => {
+                const errorMessage = err.message;
+                // console.log({ errorMessage });
+                setError(errorMessage);
+                toast.error(err.message, {
+                    position: "top-right",
+                    autoClose: 2000
+                })
+            })
     }
 
     // ! toggle password
@@ -53,9 +91,9 @@ const Login = () => {
                             </label>
                         </div>
 
-                        {/* {
+                        {
                             error && <p className='text-red-600'>{error}</p>
-                        } */}
+                        }
 
                         <div className="form-control mt-1">
                             <button className="btn btn-primary">Login</button>

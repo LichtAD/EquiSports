@@ -12,6 +12,9 @@ import AddEquipment from './components/pages/AddEquipment';
 import EquipmentList from './components/pages/EquipmentList';
 import Login from './components/pages/Login';
 import Registration from './components/pages/Registration';
+import SingleEquipment from './components/pages/SingleEquipment';
+import AuthProvider from './components/provider/AuthProvider';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -25,16 +28,29 @@ const router = createBrowserRouter([
       },
       {
         path: "/allEquipment",
-        element: <AllEquipment></AllEquipment>,
+        element: <PrivateRoute>
+          <AllEquipment></AllEquipment>
+        </PrivateRoute>,
         loader: async () => fetch('http://localhost:5000/equisports'),
       },
       {
+        path: "/allEquipment/:id",
+        element: <PrivateRoute>
+          <SingleEquipment></SingleEquipment>
+        </PrivateRoute>,
+        loader: async ({ params }) => fetch(`http://localhost:5000/equisports/${params.id}`),
+      },
+      {
         path: "/addEquipment",
-        element: <AddEquipment></AddEquipment>,
+        element: <PrivateRoute>
+          <AddEquipment></AddEquipment>
+        </PrivateRoute>,
       },
       {
         path: "/equipmentList",
-        element: <EquipmentList></EquipmentList>,
+        element: <PrivateRoute>
+          <EquipmentList></EquipmentList>
+        </PrivateRoute>,
       },
       {
         path: "/registration",
@@ -50,6 +66,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )

@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { IoLogoGoogle } from "react-icons/io";
+import { AuthContext } from '../provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Registration = () => {
+
+    const { createNewUser, setUser } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleRegistration = (event) => {
         event.preventDefault();
@@ -14,6 +20,26 @@ const Registration = () => {
         const photo = form.photo.value;
         const password = form.password.value;
         console.log({ name, email, photo, password });
+
+        createNewUser(email, password)
+            .then(result => {
+                setUser(result.user);
+                // console.log(result.user);
+                Swal.fire({
+                    title: "Congratulations!",
+                    text: "You have successfully registered!",
+                    icon: "success"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        navigate('/')
+                    }
+                })
+                form.reset();
+            })
+            .catch(err => {
+                const errorMessage = err.message;
+                console.log({ errorMessage });
+            })
     }
 
     // ! toggle password

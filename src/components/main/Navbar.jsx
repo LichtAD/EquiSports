@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    // console.log(user);
 
     // ! theme function
     const [theme, setTheme] = useState('light');
@@ -15,6 +19,10 @@ const Navbar = () => {
         <li><NavLink to="/addEquipment">Add Equipment</NavLink></li>
         <li><NavLink to="/equipmentList">My Equipment List</NavLink></li>
     </>
+
+    const handleLogout = () => {
+
+    }
 
     return (
         <div>
@@ -41,7 +49,14 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <NavLink to="/" className="btn btn-ghost text-xl">Equisports</NavLink>
+                    <div className='flex gap-2 items-center'>
+                        <NavLink to="/" className="btn btn-ghost text-xl">Equisports</NavLink>
+                        <h2>
+                            {
+                                user ? `Welcome ${user.email} - ${user.displayName}` : 'Welcome Guest'
+                            }
+                        </h2>
+                    </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -49,9 +64,15 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='navbar-end flex gap-2'>
-                    <div className="flex gap-2">
-                        <NavLink to={'/registration'} className="btn bg-white border-none">Registration</NavLink>
-                        <NavLink to={'/login'} className="btn bg-white border-none">Login</NavLink>
+                    <div>
+                        {
+                            user && user?.email ?
+                                <button onClick={logOut} className="btn bg-white border-none">LogOut</button>
+                                : <div className="flex gap-2">
+                                    <NavLink to={'/registration'} className="btn bg-white border-none">Registration</NavLink>
+                                    <NavLink to={'/login'} className="btn bg-white border-none">Login</NavLink>
+                                </div>
+                        }
                     </div>
                     <div>
                         {/* ⁡⁢⁣⁢customize start⁡ */}

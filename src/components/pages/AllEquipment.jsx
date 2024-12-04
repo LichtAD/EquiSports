@@ -1,13 +1,11 @@
 // all sports equipment page - 2nd in nav
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { NavLink, useLoaderData } from 'react-router-dom';
 
 const AllEquipment = () => {
 
     const loadedEquipment = useLoaderData();
     // console.log(loadedEquipment);
-
-    // const { _id, email, name, item_name, category_name, description, price, rating, customization, processing_time, stock_status, image } = loadedEquipment;
 
     return (
         <div>
@@ -32,7 +30,7 @@ const AllEquipment = () => {
                                 <td>{equipment.item_name}</td>
                                 <td>{equipment.category_name}</td>
                                 <td>{equipment.price}</td>
-                                <td><button className='btn btn-xs'>View Details</button></td>
+                                <td><NavLink to={`/allEquipment/${equipment._id}`} className='btn btn-xs'>View Details</NavLink></td>
                             </tr>)
                         }
 
