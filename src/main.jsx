@@ -26,6 +26,7 @@ const router = createBrowserRouter([
       {
         path: "/allEquipment",
         element: <AllEquipment></AllEquipment>,
+        loader: async () => fetch('http://localhost:5000/equisports'),
       },
       {
         path: "/addEquipment",
