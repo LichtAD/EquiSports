@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { AuthContext } from '../provider/AuthProvider';
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet';
 
 const AddEquipment = () => {
 
@@ -57,6 +58,11 @@ const AddEquipment = () => {
 
     return (
         <div className='space-y-4 my-10'>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Add Equipment | EquiSports</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h1 className='text-3xl text-center font-bold'>
                 <Fade delay={1e3} cascade damping={1e-1}>Add Equipment</Fade>
             </h1>

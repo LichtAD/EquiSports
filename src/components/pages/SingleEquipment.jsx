@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useLoaderData } from 'react-router-dom';
 
 const SingleEquipment = () => {
@@ -10,6 +11,11 @@ const SingleEquipment = () => {
 
     return (
         <div className='my-10'>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Equipment Details | EquiSports</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h2 className='text-center text-3xl font-bold my-4'>Equipment Details</h2>
 
             <div className="flex flex-col lg:flex-row bg-base-100 w-full lg:h-[500px] shadow-xl rounded-xl mt-10">

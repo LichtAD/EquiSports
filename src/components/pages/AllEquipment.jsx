@@ -4,6 +4,7 @@ import { NavLink, useLoaderData } from 'react-router-dom';
 import { BsSortNumericDownAlt } from "react-icons/bs";
 import { Fade } from "react-awesome-reveal";
 import { AuthContext } from '../provider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const AllEquipment = () => {
 
@@ -41,6 +42,11 @@ const AllEquipment = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>All Equipment | EquiSports</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <div className='my-4 flex justify-between items-center'>
                 <div></div>
                 <h1 className='text-3xl font-bold'>

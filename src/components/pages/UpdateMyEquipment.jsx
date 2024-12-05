@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const UpdateMyEquipment = () => {
 
@@ -60,6 +61,11 @@ const UpdateMyEquipment = () => {
 
     return (
         <div className='my-10'>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Update My Equipment | EquiSports</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h3 className='text-center text-3xl font-bold my-4'>Update My Equipment</h3>
 
             <div className=''>

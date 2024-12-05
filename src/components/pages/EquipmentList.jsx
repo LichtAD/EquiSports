@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 import SingleMyEquipment from './SingleMyEquipment';
 import { AuthContext } from '../provider/AuthProvider';
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet';
 
 const EquipmentList = () => {
 
@@ -19,6 +20,11 @@ const EquipmentList = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Equipment | EquiSports</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
             <h1 className='text-center text-3xl font-bold my-4'>
                 <Fade delay={1e3} cascade damping={1e-1}>My Equipment</Fade>
             </h1>

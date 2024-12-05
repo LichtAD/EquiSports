@@ -3,7 +3,7 @@ import { Fade, Slide } from 'react-awesome-reveal';
 
 const Banner = () => {
     return (
-        <div className="my-10 lg:h-[448px] lg:w-[832px] py-4 lg:py-0 mx-auto bg-[url('/images/banner.jpg')] rounded-2xl bg-no-repeat bg-center bg-cover bg-black/40 bg-blend-overlay">
+        <div className="my-10 h-[448px] lg:w-[832px] py-4 lg:py-0 mx-auto bg-[url('/images/banner.jpg')] rounded-2xl bg-no-repeat bg-center bg-cover bg-black/40 bg-blend-overlay">
             <div className="text-white flex gap-4 flex-col justify-center items-center h-full">
                 <h1 className="text-5xl font-bold text-center">
                     <Slide>Welcome to EquiSports</Slide>
