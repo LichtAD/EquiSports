@@ -126,7 +126,7 @@ const AddEquipment = () => {
                     </div>
 
                     <div className="form-control mt-8">
-                        <button className="btn border-2 text-xl w-full">
+                        <button className="btn bg-slate-200 border-2 text-xl w-full">
                             Add Equipment
                         </button>
                     </div>

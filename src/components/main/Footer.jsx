@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Footer = () => {
+
+    const { theme } = useContext(AuthContext);
+
     return (
-        <footer className="footer footer-center bg-slate-200 p-10 flex justify-evenly">
-            <div className='flex justify-center items-center flex-col gap-2'>
+        <footer className={`flex justify-start lg:flex-row flex-col ${theme === 'dark' ? 'bg-slate-900' : 'bg-slate-200'} p-10 flex justify-evenly`}>
+            <div>
                 <aside className='flex flex-col justify-center items-center gap-2'>
                     <div>
                         <img src="/images/logo.jpg" className='w-20' alt="" />
@@ -15,7 +19,7 @@ const Footer = () => {
                     <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
                 </aside>
                 <nav>
-                    <div className="grid grid-flow-col gap-4">
+                    <div className="flex justify-around md:justify-center gap-8 mt-4">
                         <a>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -53,31 +57,39 @@ const Footer = () => {
                 </nav>
             </div>
 
-            <nav>
-                <h6 className="footer-title">Services</h6>
-                <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
-                <a className="link link-hover">Advertisement</a>
-            </nav>
+            <div className='grid grid-cols-2 lg:grid-cols-3 gap-4 mt-4'>
+                <nav className='mt-4'>
+                    <h6 className="footer-title">Services</h6>
+                    <div className='flex flex-col gap-4'>
+                        <a className="link link-hover">Branding</a>
+                        <a className="link link-hover">Design</a>
+                        <a className="link link-hover">Marketing</a>
+                        <a className="link link-hover">Advertisement</a>
+                    </div>
+                </nav>
 
-            <nav>
-                <h6 className="footer-title">Company</h6>
-                <a className="link link-hover">About us</a>
-                <a className="link link-hover">Contact</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
-            </nav>
+                <nav className='mt-4 lg:mx-10'>
+                    <h6 className="footer-title">Company</h6>
+                    <div className='flex flex-col gap-4'>
+                        <a className="link link-hover">About us</a>
+                        <a className="link link-hover">Contact</a>
+                        <a className="link link-hover">Jobs</a>
+                        <a className="link link-hover">Press kit</a>
+                    </div>
+                </nav>
 
-            <nav>
-                <h6 className="footer-title">Legal</h6>
-                <a className="link link-hover">Terms of use</a>
-                <a className="link link-hover">Privacy policy</a>
-                <a className="link link-hover">Cookie policy</a>
-                <a className="link link-hover">Licenses</a>
-            </nav>
+                <nav className='mt-4 lg:mx-10'>
+                    <h6 className="footer-title">Legal</h6>
+                    <div className='flex flex-col gap-4'>
+                        <a className="link link-hover">Terms of use</a>
+                        <a className="link link-hover">Privacy policy</a>
+                        <a className="link link-hover">Cookie policy</a>
+                        <a className="link link-hover">Licenses</a>
+                    </div>
+                </nav>
+            </div>
 
-            <form>
+            <form className='mt-4'>
                 <h6 className="footer-title">Contact Us</h6>
                 <fieldset className="form-control w-80">
                     <label className="label">
@@ -92,7 +104,8 @@ const Footer = () => {
                     </div>
                 </fieldset>
             </form>
-        </footer>
+
+        </footer >
     );
 };
 

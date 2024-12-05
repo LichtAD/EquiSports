@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../provider/AuthProvider';
 
 const SingleMyEquipment = ({ equipment, myEquipment, setMyEquipment }) => {
+
+    const { theme } = useContext(AuthContext);
 
     // console.log(equipment);
     const { _id, email, name, item_name, category_name, description, price, rating, customization, processing_time, stock_status, image } = equipment;
@@ -44,7 +47,7 @@ const SingleMyEquipment = ({ equipment, myEquipment, setMyEquipment }) => {
 
     return (
         <div>
-            <div className="card card-compact bg-base-100 w-full h-[500px] shadow-xl border-2">
+            <div className={`card card-compact bg-base-100 w-full h-[500px] shadow-xl border-2 ${theme === 'light' ? 'border-slate-200' : 'border-[#2A323C]'}`}>
                 <figure className="h-[70%]">
                     <img
                         className="h-full w-full object-cover"
@@ -60,7 +63,7 @@ const SingleMyEquipment = ({ equipment, myEquipment, setMyEquipment }) => {
                         <p>Rating: {rating}</p>
                     </div>
                     <div className="card-actions flex flex-col">
-                        <NavLink to={`/equipmentList/${_id}`} className="btn btn-primary"><FaPen size={20} /></NavLink>
+                        <NavLink to={`/equipmentList/${_id}`} className="btn btn-primary"><FaPen size={20} className='text-white' /></NavLink>
                         <div onClick={() => { handleDelete(_id) }} className="btn btn-error"><MdDelete className='text-white' size={20} /></div>
                     </div>
                 </div>

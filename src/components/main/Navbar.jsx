@@ -5,11 +5,11 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const Navbar = () => {
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, theme, setTheme } = useContext(AuthContext);
     // console.log(user);
 
     // ! theme function
-    const [theme, setTheme] = useState('light');
+
     useEffect(() => {
         document.querySelector('html').setAttribute('data-theme', theme);
     }, [theme]);
@@ -19,6 +19,16 @@ const Navbar = () => {
         <li><NavLink to="/allEquipment">All Sports Equipment</NavLink></li>
         <li><NavLink to="/addEquipment">Add Equipment</NavLink></li>
         <li><NavLink to="/equipmentList">My Equipment List</NavLink></li>
+        {
+            user ?
+                <div>
+                    <li><button onClick={logOut} className={`lg:hidden ${theme === 'dark' ? 'bg-[#2A323C]' : 'bg-white'}  border-none`}>LogOut</button></li>
+                </div>
+                : <div>
+                    <li><NavLink className='lg:hidden' to="/registration">Registration</NavLink></li>
+                    <li><NavLink className='lg:hidden' to="/login">Login</NavLink></li>
+                </div>
+        }
     </>
 
     const handleLogout = () => {
@@ -27,7 +37,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-slate-200 px-4">
+            <div className={`navbar ${theme === 'dark' ? 'bg-slate-900' : 'bg-slate-200'} px-4`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -84,27 +94,29 @@ const Navbar = () => {
                                                 : 'image'
                                         }
                                     </div>
-                                    <button onClick={logOut} className="btn bg-white border-none">LogOut</button>
+                                    <button onClick={logOut} className={`hidden lg:flex btn ${theme === 'dark' ? 'bg-[#2A323C]' : 'bg-white'}  border-none`}>LogOut</button>
                                 </div>
                                 : <div className="flex gap-2">
-                                    <NavLink to={'/registration'} className="btn bg-white border-none">Registration</NavLink>
-                                    <NavLink to={'/login'} className="btn bg-white border-none">Login</NavLink>
+                                    <NavLink to={'/registration'} className={`hidden lg:flex btn ${theme === 'dark' ? 'bg-[#2A323C]' : 'bg-white'}  border-none`}>Registration</NavLink>
+                                    <NavLink to={'/login'} className={`hidden lg:flex btn ${theme === 'dark' ? 'bg-[#2A323C]' : 'bg-white'}  border-none`}>Login</NavLink>
                                 </div>
                         }
                     </div>
                     <div>
                         {/* ⁡⁢⁣⁢customize start⁡ */}
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn m-1 bg-white border-none">
-                                Theme
-                                <svg
-                                    width="12px"
-                                    height="12px"
-                                    className="inline-block h-2 w-2 fill-current opacity-60"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 2048 2048">
-                                    <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-                                </svg>
+                            <div tabIndex={0} role="button" className={`btn m-1 ${theme === 'dark' ? 'bg-[#2A323C]' : 'bg-white'} border-none flex justify-center items-center w-24`}>
+                                <h1>Theme</h1>
+                                <div>
+                                    <svg
+                                        width="12px"
+                                        height="12px"
+                                        className="inline-block h-2 w-2 fill-current opacity-60"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 2048 2048">
+                                        <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                                    </svg>
+                                </div>
                             </div>
                             <ul tabIndex={0} className="dropdown-content bg-base-300 w-24 rounded-box z-[1] p-2 shadow-2xl">
 

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const SingleProduct = ({ product }) => {
+
+    const {theme} = useContext(AuthContext);
 
     // console.log(product);
 
@@ -11,7 +14,7 @@ const SingleProduct = ({ product }) => {
         <div>
             <div>
                 {/* card */}
-                <div className="card card-compact bg-base-100 w-full h-[500px] shadow-xl border-2">
+                <div className={`card card-compact bg-base-100 w-full h-[500px] shadow-xl border-2 ${theme === 'light' ? 'border-slate-200' : 'border-[#2A323C]'}`}>
                     <figure className="h-[70%]">
                         <img
                             className="h-full w-full object-cover"
@@ -24,7 +27,7 @@ const SingleProduct = ({ product }) => {
                         <p> Category: {category_name}</p>
                         <p> Price: {price}$</p>
                         <div className="card-actions">
-                            <NavLink to={`/allEquipment/${_id}`} className="btn btn-primary">View Details</NavLink>
+                            <NavLink to={`/allEquipment/${_id}`} className="btn bg-slate-200">View Details</NavLink>
                         </div>
                     </div>
                 </div>

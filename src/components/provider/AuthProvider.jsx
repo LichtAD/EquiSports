@@ -15,6 +15,8 @@ const AuthProvider = ({ children }) => {
 
     // console.log(loading, user);
 
+    const [theme, setTheme] = useState('light');
+
     // ! register with email and password
     const createNewUser = (email, password) => {
         setLoading(true);
@@ -53,6 +55,8 @@ const AuthProvider = ({ children }) => {
         updateMyProfile,
         logOut,
         loading,
+        theme,
+        setTheme,
     }
 
     useEffect(() => {

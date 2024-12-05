@@ -1,10 +1,13 @@
 // all sports equipment page - 2nd in nav
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink, useLoaderData } from 'react-router-dom';
 import { BsSortNumericDownAlt } from "react-icons/bs";
 import { Fade } from "react-awesome-reveal";
+import { AuthContext } from '../provider/AuthProvider';
 
 const AllEquipment = () => {
+
+    const { theme } = useContext(AuthContext);
 
     const loadedEquipment = useLoaderData();
     // console.log(loadedEquipment);
@@ -44,7 +47,7 @@ const AllEquipment = () => {
                     <Fade delay={1e3} cascade damping={1e-1}>All Equipment</Fade>
                 </h1>
                 <div>
-                    <button onClick={() => handleSort('Price_ASC')} className='btn border-black rounded-full'>Sort by Price <BsSortNumericDownAlt size={20} /></button>
+                    <button onClick={() => handleSort('Price_ASC')} className={`btn ${theme === 'dark' ? 'border-white' : 'border-black'} rounded-full`}>Sort by Price <BsSortNumericDownAlt size={20} /></button>
                 </div>
             </div>
 
@@ -67,7 +70,7 @@ const AllEquipment = () => {
                                 <td>{equipment.item_name}</td>
                                 <td>{equipment.category_name}</td>
                                 <td>{equipment.price}</td>
-                                <td><NavLink to={`/allEquipment/${equipment._id}`} className='btn btn-xs'>View Details</NavLink></td>
+                                <td><NavLink to={`/allEquipment/${equipment._id}`} className='btn btn-md lg:btn-xs'>View Details</NavLink></td>
                             </tr>)
                         }
 
