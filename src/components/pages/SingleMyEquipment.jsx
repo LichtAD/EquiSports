@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaPen } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const SingleMyEquipment = ({ equipment, myEquipment, setMyEquipment }) => {
@@ -59,7 +60,7 @@ const SingleMyEquipment = ({ equipment, myEquipment, setMyEquipment }) => {
                         <p>Rating: {rating}</p>
                     </div>
                     <div className="card-actions flex flex-col">
-                        <div className="btn btn-primary"><FaPen size={20} /></div>
+                        <NavLink to={`/equipmentList/${_id}`} className="btn btn-primary"><FaPen size={20} /></NavLink>
                         <div onClick={() => { handleDelete(_id) }} className="btn btn-error"><MdDelete className='text-white' size={20} /></div>
                     </div>
                 </div>

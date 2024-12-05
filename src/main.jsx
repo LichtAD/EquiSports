@@ -15,6 +15,7 @@ import Registration from './components/pages/Registration';
 import SingleEquipment from './components/pages/SingleEquipment';
 import AuthProvider from './components/provider/AuthProvider';
 import PrivateRoute from './PrivateRoute';
+import UpdateMyEquipment from './components/pages/UpdateMyEquipment';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,13 @@ const router = createBrowserRouter([
           <EquipmentList></EquipmentList>
         </PrivateRoute>,
         loader: async () => fetch('http://localhost:5000/equisports'),
+      },
+      {
+        path: "/equipmentList/:id",
+        element: <PrivateRoute>
+          <UpdateMyEquipment></UpdateMyEquipment>
+        </PrivateRoute>,
+        loader: async ({ params }) => fetch(`http://localhost:5000/equisports/${params.id}`),
       },
       {
         path: "/registration",
