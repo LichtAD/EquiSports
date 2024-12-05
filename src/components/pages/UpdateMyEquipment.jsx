@@ -49,7 +49,7 @@ const UpdateMyEquipment = () => {
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Success!",
-                        text: "Coffee has been updated!",
+                        text: "Your equipment has been updated!",
                         icon: "success"
                     });
                     // form.reset();

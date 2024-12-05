@@ -1,15 +1,35 @@
 // all sports equipment page - 2nd in nav
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLoaderData } from 'react-router-dom';
+import { BsSortNumericDownAlt } from "react-icons/bs";
 
 const AllEquipment = () => {
 
     const loadedEquipment = useLoaderData();
     // console.log(loadedEquipment);
 
+    const [equipment, setEquipment] = useState(loadedEquipment);
+
+    // ! sorting by price
+    // const [sort, setSort] = useState('');
+    const handleSort = (sortType) => {
+        // setSort(sortType);
+
+        if (sortType === 'Price_ASC') {
+            const sortedEquipment = [...equipment].sort((a, b) => b.price - a.price);
+            setEquipment(sortedEquipment);
+        }
+    }
+
     return (
         <div>
-            <h1>All Equipment</h1>
+            <div className='my-4 flex justify-between items-center'>
+                <div></div>
+                <h1 className='text-3xl font-bold'>All Equipment</h1>
+                <div>
+                    <button onClick={() => handleSort('Price_ASC')} className='btn border-black rounded-full'>Sort by Price <BsSortNumericDownAlt size={20} /></button>
+                </div>
+            </div>
 
             <div className="overflow-x-auto">
                 <table className="table">
@@ -25,7 +45,7 @@ const AllEquipment = () => {
                     </thead>
                     <tbody>
                         {
-                            loadedEquipment.map((equipment, index) => <tr key={equipment._id} className="hover">
+                            equipment.map((equipment, index) => <tr key={equipment._id} className="hover">
                                 <th>{index + 1}</th>
                                 <td>{equipment.item_name}</td>
                                 <td>{equipment.category_name}</td>

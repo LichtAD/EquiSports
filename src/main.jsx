@@ -16,16 +16,18 @@ import SingleEquipment from './components/pages/SingleEquipment';
 import AuthProvider from './components/provider/AuthProvider';
 import PrivateRoute from './PrivateRoute';
 import UpdateMyEquipment from './components/pages/UpdateMyEquipment';
+import ErrorPage from './components/pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement: <div>There was an error</div>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
+        loader: async () => fetch('http://localhost:5000/equisports'),
       },
       {
         path: "/allEquipment",
