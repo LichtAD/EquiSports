@@ -20,14 +20,15 @@ const AddEquipment = () => {
         const item_name = form.item_name.value;
         const category_name = form.category_name.value;
         const description = form.description.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
+        const price = parseFloat(form.price.value);
+        const rating = parseFloat(form.rating.value);
         const customization = form.customization.value;
-        const processing_time = form.processing_time.value;
-        const stock_status = form.stock_status.value;
+        const processing_time = parseFloat(form.processing_time.value);
+        const stock_status = parseFloat(form.stock_status.value);
         const image = form.image.value;
 
         const newEquipment = { email, name, item_name, category_name, description, price, rating, customization, processing_time, stock_status, image };
+        console.log('price', price, typeof price);
         // console.log(newEquipment);
 
         // ! send data to the server

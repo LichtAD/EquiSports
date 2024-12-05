@@ -11,14 +11,28 @@ const AllEquipment = () => {
 
     const [equipment, setEquipment] = useState(loadedEquipment);
 
-    // ! sorting by price
-    // const [sort, setSort] = useState('');
-    const handleSort = (sortType) => {
-        // setSort(sortType);
+    // ! sorting by price : in client
+    // // const [sort, setSort] = useState('');
+    // const handleSort = (sortType) => {
+    //     // setSort(sortType);
 
+    //     if (sortType === 'Price_ASC') {
+    //         const sortedEquipment = [...equipment].sort((a, b) => b.price - a.price);
+    //         setEquipment(sortedEquipment);
+    //     }
+    // }
+
+    // ! sorting by price : in server
+    const handleSort = (sortType) => {
         if (sortType === 'Price_ASC') {
-            const sortedEquipment = [...equipment].sort((a, b) => b.price - a.price);
-            setEquipment(sortedEquipment);
+            fetch(`http://localhost:5000/equisports-sort`, {
+                method: 'GET'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    setEquipment(data);
+                })
         }
     }
 

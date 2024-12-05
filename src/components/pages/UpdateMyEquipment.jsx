@@ -25,11 +25,11 @@ const UpdateMyEquipment = () => {
         const item_name = form.item_name.value;
         const category_name = form.category_name.value;
         const description = form.description.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
+        const price = parseFloat(form.price.value);
+        const rating = parseFloat(form.rating.value);
         const customization = form.customization.value;
-        const processing_time = form.processing_time.value;
-        const stock_status = form.stock_status.value;
+        const processing_time = parseFloat(form.processing_time.value);
+        const stock_status = parseFloat(form.stock_status.value);
         const image = form.image.value;
 
         const updateEquipment = { item_name, category_name, description, price, rating, customization, processing_time, stock_status, image };
@@ -60,7 +60,7 @@ const UpdateMyEquipment = () => {
 
     return (
         <div className='my-10'>
-            <h3 className='text-center text-3xl font-bold my-4'>UpdateMyEquipment</h3>
+            <h3 className='text-center text-3xl font-bold my-4'>Update My Equipment</h3>
 
             <div className=''>
                 <form onSubmit={handleUpdateEquipment}>
