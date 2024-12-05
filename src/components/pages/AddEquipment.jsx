@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { AuthContext } from '../provider/AuthProvider';
+import { Fade } from 'react-awesome-reveal';
 
 const AddEquipment = () => {
 
@@ -55,7 +56,9 @@ const AddEquipment = () => {
 
     return (
         <div className='space-y-4 my-10'>
-            <h1 className='text-3xl text-center font-bold'>Add New Equipment</h1>
+            <h1 className='text-3xl text-center font-bold'>
+                <Fade delay={1e3} cascade damping={1e-1}>Add Equipment</Fade>
+            </h1>
             <p className='text-center w-[80%] mx-auto'>Add your new sports equipment to our platform. Describe it as much as you can so that other users can understand what they are getting. Make sure to add a good image and to set a fair price.</p>
 
             <div className=''>

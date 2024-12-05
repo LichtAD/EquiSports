@@ -20,9 +20,9 @@ const SingleProduct = ({ product }) => {
                         />
                     </figure>
                     <div className="p-4 space-y-4">
-                        <h2 className="card-title">Name: {item_name}</h2>
+                        <h2 className="card-title">{item_name}</h2>
                         <p> Category: {category_name}</p>
-                        <p> Price: {price}</p>
+                        <p> Price: {price}$</p>
                         <div className="card-actions">
                             <NavLink to={`/allEquipment/${_id}`} className="btn btn-primary">View Details</NavLink>
                         </div>

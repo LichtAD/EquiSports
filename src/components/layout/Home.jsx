@@ -6,10 +6,7 @@ import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
 
-    const loadedProducts = useLoaderData();
-    // console.log(loadedProducts);
-
-    const slicedProducts = loadedProducts.slice(0, 6);
+    const slicedProducts = useLoaderData();
     // console.log(slicedProducts);
 
     return (

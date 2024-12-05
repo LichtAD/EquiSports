@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const Navbar = () => {
 
@@ -50,7 +51,10 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className='flex gap-2 items-center'>
-                        <NavLink to="/" className="btn btn-ghost text-xl">Equisports</NavLink>
+                        <NavLink to="/">
+                            <img src="/images/logo.jpg" className='w-12' alt="" />
+                        </NavLink>
+                        <NavLink to="/" className="text-xl font-bold">Equisports</NavLink>
                         {/* <h2>
                             {
                                 user ? `Welcome ${user.email} - ${user.displayName}` : 'Welcome Guest'
@@ -71,7 +75,8 @@ const Navbar = () => {
                                     <div>
                                         {
                                             user && user?.photoURL ?
-                                                <div className="avatar tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                                // <div className="avatar tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                                <div data-tooltip-id="my-tooltip-1" className="avatar">
                                                     <div className="w-12 rounded-full">
                                                         <img src={user?.photoURL} />
                                                     </div>
@@ -131,6 +136,11 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            <ReactTooltip
+                id="my-tooltip-1"
+                place="bottom"
+                content={user?.displayName}
+            />
         </div>
     );
 };

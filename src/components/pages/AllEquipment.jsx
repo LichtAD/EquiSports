@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { NavLink, useLoaderData } from 'react-router-dom';
 import { BsSortNumericDownAlt } from "react-icons/bs";
+import { Fade } from "react-awesome-reveal";
 
 const AllEquipment = () => {
 
@@ -25,7 +26,9 @@ const AllEquipment = () => {
         <div>
             <div className='my-4 flex justify-between items-center'>
                 <div></div>
-                <h1 className='text-3xl font-bold'>All Equipment</h1>
+                <h1 className='text-3xl font-bold'>
+                    <Fade delay={1e3} cascade damping={1e-1}>All Equipment</Fade>
+                </h1>
                 <div>
                     <button onClick={() => handleSort('Price_ASC')} className='btn border-black rounded-full'>Sort by Price <BsSortNumericDownAlt size={20} /></button>
                 </div>
