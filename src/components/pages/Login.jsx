@@ -14,7 +14,7 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const { logInUser, setUser } = useContext(AuthContext);
+    const { logInUser, setUser, signInWithGoogle } = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
@@ -36,7 +36,7 @@ const Login = () => {
                     confirmButtonText: "OK"
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        navigate(location?.state ? location.state : "/" )
+                        navigate(location?.state ? location.state : "/")
                     }
                 })
                 form.reset();
@@ -103,11 +103,38 @@ const Login = () => {
                             <h1>Don't have an account? <Link to={'/registration'} className='text-primary link link-hover'>Register</Link></h1>
                         </div>
 
-                        <div className='text-center'>
-                            <button className="btn btn-primary btn-outline rounded-full">
+                        <div className="text-center">
+                            <button
+                                onClick={async () => {
+                                    try {
+                                        const result = await signInWithGoogle();
+                                        if (result) {
+                                            Swal.fire({
+                                                title: "Congratulations!",
+                                                text: "You have successfully logged in!",
+                                                icon: "success",
+                                                confirmButtonText: "OK",
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    navigate(location?.state ? location.state : "/");
+                                                }
+                                            });
+                                        }
+                                    } catch (error) {
+                                        Swal.fire({
+                                            title: "Login Failed",
+                                            text: error.message || "An error occurred during login.",
+                                            icon: "error",
+                                            confirmButtonText: "Try Again",
+                                        });
+                                    }
+                                }}
+                                className="btn btn-primary btn-outline rounded-full"
+                            >
                                 <IoLogoGoogle size={20} /> Login with Google
                             </button>
                         </div>
+
                     </form>
                 </div>
             </div>
