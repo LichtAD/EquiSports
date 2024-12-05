@@ -127,7 +127,7 @@ const UpdateMyEquipment = () => {
 
                     <div className="form-control mt-8">
                         <button className="btn border-2 text-xl w-full">
-                            Add Equipment
+                            Update Equipment
                         </button>
                     </div>
 
