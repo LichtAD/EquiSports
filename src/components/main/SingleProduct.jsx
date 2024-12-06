@@ -27,7 +27,7 @@ const SingleProduct = ({ product }) => {
                         <p> Category: {category_name}</p>
                         <p> Price: {price}$</p>
                         <div className="card-actions">
-                            <NavLink to={`/allEquipment/${_id}`} className="btn bg-slate-200">View Details</NavLink>
+                            <NavLink to={`/allEquipment/${_id}`} className="btn bg-slate-200 text-black">View Details</NavLink>
                         </div>
                     </div>
                 </div>

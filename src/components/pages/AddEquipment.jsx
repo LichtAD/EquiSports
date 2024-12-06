@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet';
 
 const AddEquipment = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, theme } = useContext(AuthContext);
     // console.log(user);
 
     const navigate = useNavigate();
@@ -97,13 +97,13 @@ const AddEquipment = () => {
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input type="number" name="price" placeholder="Enter Price" className="input input-bordered" required />
+                            <input type="text" name="price" placeholder="Enter Price" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input type="number" name="rating" placeholder="Enter Rating" className="input input-bordered" required />
+                            <input type="text" name="rating" placeholder="Enter Rating" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -132,7 +132,7 @@ const AddEquipment = () => {
                     </div>
 
                     <div className="form-control mt-8">
-                        <button className="btn bg-slate-200 border-2 text-xl w-full">
+                        <button className={`btn ${theme === 'dark' ? 'bg-slate-900 text-[#A6ADBB]' : 'bg-slate-200'} border-2 text-xl w-full`}>
                             Add Equipment
                         </button>
                     </div>

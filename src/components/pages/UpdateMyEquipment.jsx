@@ -8,7 +8,7 @@ const UpdateMyEquipment = () => {
 
     const navigate = useNavigate();
 
-    const { user } = useContext(AuthContext);
+    const { user, theme } = useContext(AuthContext);
 
     const loadedEquipment = useLoaderData();
     // console.log(loadedEquipment);
@@ -97,13 +97,13 @@ const UpdateMyEquipment = () => {
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input type="number" name="price" defaultValue={price} placeholder="Enter Price" className="input input-bordered" required />
+                            <input type="text" name="price" defaultValue={price} placeholder="Enter Price" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input type="number" name="rating" defaultValue={rating} placeholder="Enter Rating" className="input input-bordered" required />
+                            <input type="text" name="rating" defaultValue={rating} placeholder="Enter Rating" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -132,7 +132,7 @@ const UpdateMyEquipment = () => {
                     </div>
 
                     <div className="form-control mt-8">
-                        <button className="btn bg-slate-200 text-xl w-full">
+                        <button className={`btn ${theme === 'dark' ? 'bg-slate-900 text-[#A6ADBB]' : 'bg-slate-200'} text-xl w-full`}>
                             Update Equipment
                         </button>
                     </div>
