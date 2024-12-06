@@ -45,4 +45,4 @@ EquiSports is a platform to connect users with their desired sports equipment. I
 
 ## Live Link of the Project
 
-# [Live Site Link]()
+# [Live Site Link](https://equi-sports-lichtad.web.app/)
