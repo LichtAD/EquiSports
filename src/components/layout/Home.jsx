@@ -6,6 +6,7 @@ import { useLoaderData } from 'react-router-dom';
 import Banner from '../main/Banner';
 import ContactUs from '../main/ContactUs';
 import { Helmet } from 'react-helmet';
+import Speciality from '../main/Speciality';
 
 const Home = () => {
 
@@ -27,6 +28,7 @@ const Home = () => {
                 <Slide></Slide>
                 <Product slicedProducts={slicedProducts}></Product>
                 <SportsCategories></SportsCategories>
+                <Speciality></Speciality>
                 <ContactUs></ContactUs>
             </div>
         </div>
