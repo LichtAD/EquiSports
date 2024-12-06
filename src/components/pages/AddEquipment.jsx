@@ -29,11 +29,11 @@ const AddEquipment = () => {
         const image = form.image.value;
 
         const newEquipment = { email, name, item_name, category_name, description, price, rating, customization, processing_time, stock_status, image };
-        console.log('price', price, typeof price);
+        // console.log('price', price, typeof price);
         // console.log(newEquipment);
 
         // ! send data to the server
-        fetch('http://localhost:5000/equisports', {
+        fetch('https://equi-sports-server-three.vercel.app/equisports', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

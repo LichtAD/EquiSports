@@ -29,7 +29,7 @@ const AllEquipment = () => {
     // ! sorting by price : in server
     const handleSort = (sortType) => {
         if (sortType === 'Price_ASC') {
-            fetch(`http://localhost:5000/equisports-sort`, {
+            fetch(`https://equi-sports-server-three.vercel.app/equisports-sort`, {
                 method: 'GET'
             })
                 .then(res => res.json())

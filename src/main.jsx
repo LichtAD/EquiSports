@@ -27,19 +27,19 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: async () => fetch('http://localhost:5000/equisports-six'),
+        loader: async () => fetch('https://equi-sports-server-three.vercel.app/equisports-six'),
       },
       {
         path: "/allEquipment",
         element: <AllEquipment></AllEquipment>,
-        loader: async () => fetch('http://localhost:5000/equisports'),
+        loader: async () => fetch('https://equi-sports-server-three.vercel.app/equisports'),
       },
       {
         path: "/allEquipment/:id",
         element: <PrivateRoute>
           <SingleEquipment></SingleEquipment>
         </PrivateRoute>,
-        loader: async ({ params }) => fetch(`http://localhost:5000/equisports/${params.id}`),
+        loader: async ({ params }) => fetch(`https://equi-sports-server-three.vercel.app/equisports/${params.id}`),
       },
       {
         path: "/addEquipment",
@@ -52,14 +52,14 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <EquipmentList></EquipmentList>
         </PrivateRoute>,
-        loader: async () => fetch('http://localhost:5000/equisports'),
+        loader: async () => fetch('https://equi-sports-server-three.vercel.app/equisports'),
       },
       {
         path: "/equipmentList/:id",
         element: <PrivateRoute>
           <UpdateMyEquipment></UpdateMyEquipment>
         </PrivateRoute>,
-        loader: async ({ params }) => fetch(`http://localhost:5000/equisports/${params.id}`),
+        loader: async ({ params }) => fetch(`https://equi-sports-server-three.vercel.app/equisports/${params.id}`),
       },
       {
         path: "/registration",

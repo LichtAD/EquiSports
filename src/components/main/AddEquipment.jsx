@@ -32,7 +32,7 @@ const AddEquipment = () => {
         // console.log(newEquipment);
 
         // ! send data to the server
-        fetch('http://localhost:5000/equisports', {
+        fetch('https://equi-sports-server-three.vercel.app/equisports', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -25,7 +25,7 @@ const SingleMyEquipment = ({ equipment, myEquipment, setMyEquipment }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/equisports/${id}`, {
+                fetch(`https://equi-sports-server-three.vercel.app/equisports/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
