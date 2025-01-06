@@ -5,6 +5,7 @@ import { BsSortNumericDownAlt } from "react-icons/bs";
 import { Fade } from "react-awesome-reveal";
 import { AuthContext } from '../provider/AuthProvider';
 import { Helmet } from 'react-helmet';
+import SingleProduct from '../main/SingleProduct';
 
 const AllEquipment = () => {
 
@@ -57,9 +58,9 @@ const AllEquipment = () => {
                 </div>
             </div>
 
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
+            {/* <div className="overflow-x-auto grid grid-cols-3 gap-5 mb-10"> */}
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10'>
+                {/* <table className="table">
                     <thead>
                         <tr>
                             <th></th>
@@ -79,16 +80,28 @@ const AllEquipment = () => {
                                 <td><NavLink to={`/allEquipment/${equipment._id}`} className='btn btn-md lg:btn-xs'>View Details</NavLink></td>
                             </tr>)
                         }
-
-                        {/* row 1 */}
-                        {/* <tr className="hover">
-                            <th>1</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr> */}
                     </tbody>
-                </table>
+                </table> */}
+
+                {
+                    equipment.map(product => <SingleProduct key={product._id} product={product}></SingleProduct>)
+                }
+
+                {/* <div className="card card-compact bg-base-100 w-96">
+                    <figure>
+                        <img
+                            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                            alt="Shoes" />
+                    </figure>
+                    <div className="card-body">
+                        <h2 className="card-title">Shoes!</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div className="card-actions justify-end">
+                            <button className="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </div> */}
+
             </div>
         </div>
     );
