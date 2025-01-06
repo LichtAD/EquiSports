@@ -7,6 +7,8 @@ import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';
+import Lottie from 'lottie-react';
+import loginAnimation from '../../assets/lottie/Login.json';
 
 const Login = () => {
 
@@ -70,6 +72,12 @@ const Login = () => {
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <div className='flex justify-center items-center h-screen'>
+                
+                <div className="text-center lg:text-left">
+                    {/* <h1 className="text-5xl font-bold ml-16">Login now!</h1> */}
+                    <Lottie className='w-[100%] mx-auto' animationData={loginAnimation}></Lottie>
+                </div>
+
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-xl">
                     <h1 className="text-center text-3xl font-bold my-4">Login Now</h1>
                     <form onSubmit={handleLogin} className="card-body">

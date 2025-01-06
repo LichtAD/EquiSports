@@ -17,7 +17,7 @@ const ContactUs = () => {
                         <div><FaLocationDot size={30} /></div>
                         <div>
                             <h1 className='text-2xl font-medium'>Our Office Address</h1>
-                            <p className='text-lg'>123 Main Street, City, Country</p>
+                            <p className='text-lg'>Chittagong</p>
                         </div>
                     </div>
 
@@ -25,7 +25,7 @@ const ContactUs = () => {
                         <div><IoMail size={30} /></div>
                         <div>
                             <h1 className='text-2xl font-medium'>General Inquiries</h1>
-                            <p className='text-lg'>0nK5P@example.com</p>
+                            <p className='text-lg'>antu4939@gmail.com</p>
                         </div>
                     </div>
 
@@ -33,7 +33,7 @@ const ContactUs = () => {
                         <div><IoCall size={30} /></div>
                         <div>
                             <h1 className='text-2xl font-medium'>Call Us</h1>
-                            <p className='text-lg'>+1 (123) 456-7890</p>
+                            <p className='text-lg'>+88001634216210</p>
                         </div>
                     </div>
 
@@ -41,7 +41,7 @@ const ContactUs = () => {
                         <div><FaClock size={30} /></div>
                         <div>
                             <h1 className='text-2xl font-medium'>Our Timing</h1>
-                            <p className='text-lg'>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                            <p className='text-lg'>Monday - Sunday: 24 hours open</p>
                         </div>
                     </div>
 

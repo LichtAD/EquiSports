@@ -4,6 +4,7 @@ import Navbar from '../main/Navbar';
 import Footer from '../main/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer2 from '../main/Footer2';
 
 const Root = () => {
     return (
@@ -14,7 +15,8 @@ const Root = () => {
             <div className='min-h-screen max-w-7xl mx-auto px-4 mt-28'>
                 <Outlet></Outlet>
             </div>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
+            <Footer2></Footer2>
 
             <ToastContainer />
         </div>
