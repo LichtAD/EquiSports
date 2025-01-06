@@ -70,7 +70,7 @@ const Navbar = () => {
                     <div className='flex gap-2 items-center'>
                         <NavLink to="/">
                             {/* <img src="/images/logo.png" className='w-16' alt="" /> */}
-                            <img src={theme === 'dark' ? "/images/logo-reverse.png" : "/images/logo.png"} className='w-24' alt="" />
+                            <img src={theme === 'dark' ? "/images/logo-reverse.png" : "/images/logo.png"} className='w-16' alt="" />
                         </NavLink>
                         <NavLink to="/" className="text-xl font-bold">Equisports</NavLink>
                         {/* <h2>
