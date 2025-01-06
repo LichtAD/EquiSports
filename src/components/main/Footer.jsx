@@ -10,7 +10,7 @@ const Footer = () => {
             <div>
                 <aside className='flex flex-col justify-center items-center gap-2'>
                     <div>
-                        <img src="/images/logo.jpg" className='w-20' alt="" />
+                        <img src="/images/logo.png" className='w-24' alt="" />
                     </div>
                     <p className="font-bold">EquiSports</p>
                     <p>

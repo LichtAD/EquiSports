@@ -17,8 +17,14 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/allEquipment">All Sports Equipment</NavLink></li>
-        <li><NavLink to="/addEquipment">Add Equipment</NavLink></li>
-        <li><NavLink to="/equipmentList">My Equipment List</NavLink></li>
+        {
+            user ?
+                <div className='flex flex-col lg:flex-row'>
+                    <li><NavLink to="/addEquipment">Add Equipment</NavLink></li>
+                    <li><NavLink to="/equipmentList">My Equipment List</NavLink></li>
+                </div>
+                : ''
+        }
         {
             user ?
                 <div>
@@ -29,6 +35,7 @@ const Navbar = () => {
                     <li><NavLink className='lg:hidden' to="/login">Login</NavLink></li>
                 </div>
         }
+        {/* <li><a href="#contact">Contact Us</a></li> */}
     </>
 
     const handleLogout = () => {
@@ -62,7 +69,7 @@ const Navbar = () => {
                     </div>
                     <div className='flex gap-2 items-center'>
                         <NavLink to="/">
-                            <img src="/images/logo.jpg" className='w-12' alt="" />
+                            <img src="/images/logo.png" className='w-16' alt="" />
                         </NavLink>
                         <NavLink to="/" className="text-xl font-bold">Equisports</NavLink>
                         {/* <h2>

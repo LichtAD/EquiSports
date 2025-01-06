@@ -6,7 +6,7 @@ import { FaClock } from "react-icons/fa6";
 
 const ContactUs = () => {
     return (
-        <div className='my-10'>
+        <div className='my-10' id='contact'>
             <h2 className='text-center text-3xl font-bold'>Contact Us</h2>
 
             <div className='grid grid-cols-1 md:grid-cols-2 mt-4'>

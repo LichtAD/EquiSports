@@ -7,7 +7,7 @@ const SportsCategories = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {/* card-1 */}
-                <div className="card card-compact bg-base-100 shadow-xl">
+                <div className="card card-compact bg-base-100 shadow-xl border-2 border-white/20">
                     <figure>
                         <img
                             src="/images/football.jpg"
@@ -23,7 +23,7 @@ const SportsCategories = () => {
                 </div>
 
                 {/* card-2 */}
-                <div className="card card-compact bg-base-100 shadow-xl">
+                <div className="card card-compact bg-base-100 shadow-xl border-2 border-white/20">
                     <figure>
                         <img
                             src="/images/cricket.jpg"
@@ -39,7 +39,7 @@ const SportsCategories = () => {
                 </div>
 
                 {/* card-3 */}
-                <div className="card card-compact bg-base-100 shadow-xl">
+                <div className="card card-compact bg-base-100 shadow-xl border-2 border-white/20">
                     <figure>
                         <img
                             src="/images/basketball.jpg"
@@ -55,7 +55,7 @@ const SportsCategories = () => {
                 </div>
 
                 {/* card-4 */}
-                <div className="card card-compact bg-base-100 shadow-xl">
+                <div className="card card-compact bg-base-100 shadow-xl border-2 border-white/20">
                     <figure>
                         <img
                             src="/images/baseball.jpg"
@@ -71,7 +71,7 @@ const SportsCategories = () => {
                 </div>
 
                 {/* card-5 */}
-                <div className="card card-compact bg-base-100 shadow-xl">
+                <div className="card card-compact bg-base-100 shadow-xl border-2 border-white/20">
                     <figure>
                         <img
                             src="/images/hockey.jpg"
@@ -87,7 +87,7 @@ const SportsCategories = () => {
                 </div>
 
                 {/* card-6 */}
-                <div className="card card-compact bg-base-100 shadow-xl">
+                <div className="card card-compact bg-base-100 shadow-xl border-2 border-white/20">
                     <figure>
                         <img
                             src="/images/tennis.jpg"
