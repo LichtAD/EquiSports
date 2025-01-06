@@ -12,7 +12,8 @@ const Footer2 = () => {
         <footer className={`footer ${theme === 'dark' ? 'bg-slate-900' : 'bg-slate-200'} p-10`}>
             <aside className='flex flex-col justify-center items-start gap-2'>
                 <div>
-                    <img src="/images/logo.png" className='w-24' alt="" />
+                    {/* <img src="/images/logo.png" className='w-24' alt="" /> */}
+                    <img src={theme === 'dark' ? "/images/logo-reverse.png" : "/images/logo.png"} className='w-24' alt="" />
                 </div>
                 <p className="font-bold">EquiSports</p>
                 <p>
@@ -46,7 +47,7 @@ const Footer2 = () => {
                                 type="text"
                                 placeholder="username@site.com"
                                 className="input input-bordered join-item" />
-                            <button className="btn bg-slate-900 text-white join-item">Subscribe</button>
+                            <button className={`btn  ${theme === 'dark' ? 'bg-[#E2E8F0] text-slate-900' : 'bg-slate-900'} text-white join-item`}>Subscribe</button>
                         </div>
                     </fieldset>
                 </form>
