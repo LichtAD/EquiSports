@@ -5,6 +5,8 @@ Find the best sports equipment for you, compare products, read reviews, and get 
 
 EquiSports is a platform to connect users with their desired sports equipment. It provides a list of various sports products and their details. Users can explore and find the best sports equipment for themselves. It also provides a feature to purchase products. The product list is categorized into three sections: Online, Offline, and Group. Users can also rate the products. The products are recommended by sports experts with high ratings.
 
+![EquiSports](https://i.ibb.co.com/vX0g3fs/equisports-front.png)
+
 ## Key Features
 
 - Users can see "All Sports Equipment" and after logging in they can see the details of the products.
@@ -46,3 +48,26 @@ EquiSports is a platform to connect users with their desired sports equipment. I
 ## Live Link of the Project
 
 # [Live Site Link](https://equi-sports-lichtad.web.app/)
+
+## How to run the project in local
+
+- First, clone the project
+```
+git clone <private-repo-url>
+```
+- Then go to project folder
+```
+cd <project-directory>
+```
+
+- Install all packages
+```
+npm i
+```
+
+- Create .env.local file and add all the environment variables from firebase
+
+- Run the project
+```
+npm run dev
+```
